@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Griffy");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+@import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light");
+
+body {
+  background-color: #667b9e;
+}
+header {
+  background-color: #6886b7;
+  padding: 2em;
+  /*text-align: center;*/
+}
+.header-links {
+  max-width: 80%;
+  font-family: "Griffy", cursive;
+}
+header h2 {
+  display: inline;
+  padding-left: 12.5%;
+}
+/*eliminate styling for links*/
+a,
+a:link,
+a:visited,
+a:hover,
+a:visited:active {
+  color: black;
+  text-decoration: none;
+}
+.center-content {
+  max-width: 70%;
+  margin: auto;
+  background-color: white;
+  text-align: left;
+  font-family: "Shadows Into Light", cursive;
+  background-color: #dadfe8;
+}
+#welcome-msg {
+  padding-top: 5em;
+  text-align: center;
+}
+img {
+  margin-top: 3em;
+  width: 100%;
+  /*I need a lower resolution img so as to not use these large borders*/
+  border: 100px solid #dadfe8;
+  border-top: none;
+  border-bottom: none;
+}
+#other-msg {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  max-width: 80%;
+  margin: auto;
+}
+#another-msg {
+  padding-bottom: 3em;
+  max-width: 80%;
+  margin: auto;
+}
+footer {
+  background-color: #6886b7;
+  padding: 1em;
+  text-align: center;
+  font-family: "Shadows Into Light", cursive;
+}
+.front-page-blocks {
+  text-align: center;
+}
+.fa {
+  padding-right: 0.2em;
+}

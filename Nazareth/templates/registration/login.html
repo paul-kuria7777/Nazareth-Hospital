@@ -1,0 +1,40 @@
+ 
+{% extends 'base/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div id="wrapper"  >
+                <div class="main-content" width="500px" >
+                  <div class="header" style="margin-right: 100px;" >
+                  </div><img width="400" height="150" src="https://lh3.googleusercontent.com/proxy/YHQN0RkG3Hlde2mJmu3vyzu0pE8htV8TvAN5hR8IlXPSZwlk2EmeiAVMz60TyyTk2QvkIORcV6nwEIyiNLTY0815sfidpCOxlbOoRyk4QHPemeMmj80OzzEMgyAQqxzeLuU0BuI" />
+                 
+                  </div>
+                  <div class="l-part">
+                      <form action="" method="post">
+                          {% csrf_token %}
+                          {% bootstrap_form form %}
+                              <br>
+                              <input type="submit" id="go" value="Log In" class="btn btn-outline-primary" />
+                         </form>
+                  </div>
+                </div>
+                <div class="sub-content">
+                  <div class="s-part">
+                      <a href="/">Forgot password?</a> <br>
+                    Don't have an account?<a href="/sign"> Sign up</a>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+{% endblock %}

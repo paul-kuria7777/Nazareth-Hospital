@@ -1,0 +1,89 @@
+{% extends 'base/base2.html' %}
+{% load bootstrap4 %} 
+{% load static %}
+
+{% block content %}
+<div class='row'>
+
+
+    <div class="col-md-4">
+        {% if request.user.profile.dp %}
+        <img src="{{request.user.profile.dp.url}}" id="prof" width='250' height='250' alt="">
+        {% else %}
+        <img src="https://www.w3schools.com/howto/img_avatar.png" width='250' height='250'  id="prof" alt="">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-1">
+                <h2> {{profile.user.username}}</h2>
+            </div><br><br>{% autoescape on %}<br>{{profile.bio|safe}} {% endautoescape %}
+        </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="container">
+{% if jobs %}
+<div class="row">
+    {% for job in jobs %}
+    <div class='col-md-4'>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{job.itemPicture.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{job.itemName}}</h5>
+              <p class="card-text">{{job.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">From: {{job.depature}}</li>
+              <li class="list-group-item">To: {{job.destination}}</li>
+              <li class="list-group-item">Salary: {{job.salary}}/=</li>
+              {% if job.picked %}
+              <li class="list-group-item">Driver: {{job.pjob.driver.username}}</li>
+              {% endif %}
+            </ul>
+            
+          </div>
+    </div>
+    <br><br><br>
+
+    {% endfor %}
+</div>
+
+{% else %}
+<h1> This users jobs will appear here</h1>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544654262-e295983be0f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544694916-eb0f093cec92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544682236-173a9a707e68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544695526-595de066b315?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://dk-denno.github.io/portfolioo/images/dennis.JPG" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544686148-6cefad713f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544662000-42e2466e7208?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544681280-d25a782adc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544694310-9106d1743bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endif %}
+</div>
+{% endblock %}
+
+
+
+
+

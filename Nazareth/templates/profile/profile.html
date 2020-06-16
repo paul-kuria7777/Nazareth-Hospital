@@ -1,0 +1,159 @@
+{% extends 'base/base2.html' %}
+{% load bootstrap4 %} 
+{% load static %}
+
+{% block content %}
+<div class='row'>
+
+
+    <div class="col-md-4">
+        {% if request.user.profile.dp %}
+        <img src="{{request.user.profile.dp.url}}" id="prof" width='250' height='250' alt="">
+        {% else %}
+        <img src="https://www.w3schools.com/howto/img_avatar.png" width='250' height='250'  id="prof" alt="">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-1">
+                <h2> {{request.user.username}}</h2>
+            </div><br><br>{% autoescape on %}<br>{{request.user.profile.bio|safe}} {% endautoescape %}
+        </div>
+        <div class="row">
+        
+            <div class="col-md-5">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#profile" >Update Profile</button>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#jobs" >Post job</button>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="container">
+{% if jobs %}
+<div class="row">
+    {% for job in jobs %}
+    <div class='col-md-4'>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{job.itemPicture.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{job.itemName}}</h5>
+              <p class="card-text">{{job.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">From: {{job.depature}}</li>
+              <li class="list-group-item">To: {{job.destination}}</li>
+              <li class="list-group-item">Salary: {{job.salary}}/=</li>
+              {% if job.picked %}
+              <li class="list-group-item">Driver: {{job.pjob.driver.username}}</li>
+              {% endif %}
+            </ul>
+            
+          </div>
+    </div>
+    <br><br><br>
+
+    {% endfor %}
+</div>
+
+{% else %}
+<h1> You're jobs will appear here</h1>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544654262-e295983be0f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544694916-eb0f093cec92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544682236-173a9a707e68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544695526-595de066b315?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://dk-denno.github.io/portfolioo/images/dennis.JPG" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544686148-6cefad713f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544662000-42e2466e7208?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img width="200" height="200" src="https://images.unsplash.com/photo-1544681280-d25a782adc9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+            <div class="col-md-4"><img  width="200" height="200" src="https://images.unsplash.com/photo-1544694310-9106d1743bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""></div>
+        </div>
+        <br>
+        
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endif %}
+</div>
+<div class="modal fade" id="profile" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">UPDATE PROFILE</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+
+                    {% bootstrap_form prof%}
+                    <div class="row">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Post">
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="jobs" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">POST JOB</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <form action="{%url 'profile' %}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+
+                    {% bootstrap_form jobform%}
+                    <div class="row">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Post">
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+

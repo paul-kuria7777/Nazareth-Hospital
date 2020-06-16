@@ -1,0 +1,173 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+html {
+  background: ghostwhite;
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.618rem;
+  padding-top: 2rem;
+}
+/* — Checkout Process from da future ———————— */
+.header {
+  padding: 2rem;
+  border-radius: 4px 4px 0 0;
+  color: white;
+  background: #e74c3c;
+  overflow-x: hidden;
+}
+.m-checkout {
+  width: 42rem;
+  margin: 0 auto;
+}
+.m-checkout .m-checkout__form {
+  padding: 2rem;
+  border-radius: 0 0 4px 4px;
+  font-family: "Ubuntu Light", "Lucida Grande", sans-serif;
+  background-color: #ecf0f1;
+  border-bottom: 3px solid #95a5a6;
+}
+.m-checkout .m-checkout__form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+.m-checkout .m-checkout__form label {
+  color: #7f8c8d;
+  font-family: "Ubuntu Medium", "Lucida Grande", sans-serif;
+  font-size: 1.4rem;
+  cursor: pointer;
+  float: right;
+  bottom: 26px;
+  z-index: 10;
+  right: 15px;
+}
+.m-checkout .m-checkout__form input {
+  width: 100%;
+  padding: 1.5rem 9.5rem 1.5rem 1.5rem;
+  border: 0;
+  color: #555;
+  border: 1px solid #ccd4d5;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  outline: none;
+}
+.m-checkout .m-checkout__form input:first-of-type {
+  border-top-width: 1px;
+  border-radius: 4px 4px 0 0;
+}
+.m-checkout .m-checkout__form input:nth-of-type(2n+2) {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+.m-checkout .m-checkout__form input:last-of-type {
+  border-bottom-width: 1px;
+  border-radius: 0 0 4px 4px;
+}
+.m-checkout .m-checkout__form input.touched:valid + label {
+  color: #2ecc71;
+  transition: color 0.28s ease;
+}
+.m-checkout .m-checkout__form input.touched:focus:invalid + label {
+  color: #e74c3c;
+  transition: color 0.28s ease;
+}
+.m-checkout .m-checkout__form .checkbox {
+  margin: 18px 0 50px 0;
+}
+.m-checkout .m-checkout__form .checkbox label {
+  float: left;
+  top: 6px;
+  left: 20px;
+}
+.m-checkout .m-checkout__form .checkbox input {
+  float: left;
+  width: auto;
+}
+.m-checkout .m-checkout__form .btn {
+  padding: 1.3rem;
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+.m-checkout .m-checkout__form .btn.btn--block {
+  width: 100%;
+}
+.m-checkout .m-checkout__form .btn.btn--rounded {
+  border-radius: 4px;
+}
+.m-checkout .m-checkout__form .btn.btn--success {
+  color: #ecf0f1;
+  text-shadow: 0 2px 0 #c0392b;
+  background: #e74c3c;
+  border-bottom: 3px solid #c0392b;
+}
+.m-checkout .m-checkout__form .btn[disabled] {
+  opacity: 0.5;
+  color: #ecf0f1;
+  text-shadow: 0 2px 0 #7f8c8d;
+  background: #95a5a6;
+  border-bottom: 3px solid #7f8c8d;
+  padding: 2rem;
+}
+.m-checkout .icon-truck {
+  float: right;
+  opacity: 0.33;
+}
+.m-checkout .icon-gift {
+  opacity: 0.33;
+}
+/* ——————————————————————————————————— */
+.is-almost-there,
+.is-there {
+  transition: left 0.45s ease;
+}
+.is-almost-there {
+  left: 45%;
+}
+.is-there {
+  left: 85%;
+}
+.is-going-into-the-truck {
+  animation: into-truck 2s ease forwards;
+}
+.is-delivering {
+  animation: truck-move 2s ease forwards, start-engine 0.28s 2s infinite ease, truck-drive 2s 3s ease forwards;
+}
+@keyframes into-truck {
+  0% {
+    top: 5px;
+  }
+  25% {
+    top: -25px;
+  }
+  50% {
+    left: 94%;
+  }
+  100% {
+    top: 0px;
+    left: 97%;
+    font-size: 0rem;
+    opacity: 0;
+  }
+}
+@keyframes truck-move {
+  100% {
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+}
+@keyframes start-engine {
+  to {
+    top: -0.1rem;
+  }
+}
+@keyframes truck-drive {
+  to {
+    right: -50px;
+  }
+}

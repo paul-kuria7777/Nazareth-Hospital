@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<script src="https://kit.fontawesome.com/ebfafc2eb8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <a href="/admin/courier/profile/add ">Add Nurse</a>
+<!-- Search Bar -->
+<div class="searchbox animated zoomIn">
+  <form action="{% url 'search' %}" >
+    <input oninput="triggercross(this.value)" type="text" placeholder="search" id="search" name="user"
+        class="search"><i class="fas fa-search"></i>
+    <button onclick="close1()" id="closeid" type="reset" class="close">
+        <i class="fas fa-times"></i>
+        <p id="demo"></p>
+    </button>
+</form>
+</div>
+<br><br>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nurse No.</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Contacts</th>
+            <th scope="col">Emergency Contact</th>
+            <th scope="col">Home Address</th>
+            <th scope="col">DOB</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for nurse in nurses %}
+          <tr>
+              <th scope="row">{{nurse.id}}</th>
+              <td>{{nurse.first}} </td>
+              <td>{{nurse.last}}</td>
+              <td>{{nurse.email}}</td>
+              <td>{{nurse.contact}}</td>
+              <td>{{nurse.emergency}}</td>
+              <td>{{nurse.address}}</td>
+              <td>{{nurse.birth}}</td>
+          </tr>
+          {% endfor %}
+           
+        </tbody>
+      </table>
+</body>
+</html>
+<script>
+  function triggercross(val) {
+    var val = document.getElementById("search");
+    var x = document.getElementById("closeid");
+    x.style.display = "block";
+}
+
+function close1() {
+
+    // document.getElementById("demo").innerHTML = "You wrote: " + val;
+    var x = document.getElementById("closeid");
+    if (x.style.display == "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+</script>
+<style>
+  body{
+    background-color: #cce7ff;
+  }
+    .searchbox{
+      position: relative;
+      display: inline-block;
+      margin-left: 1.5rem;
+    }
+    .searchbox input:focus {
+      outline: none; /*by default,input shows an outline on focus */
+    }
+    .searchbox input{
+      z-index: 0;
+      margin-top: 8%;
+      width: 250%;
+      height: 40px;
+      background:#f1f3f4;
+      border-radius: 25px;
+      border: 2px solid #f1f3f4;
+    }
+    form{
+      display:inline-block;
+    }
+  #closeid{
+    display: none;
+  }
+   .fa-search{
+       position: absolute;
+       top:55%;
+       left:5%;
+       color:#8e99a4;
+   }
+   .close{
+          position: absolute;
+          top:50%;
+          right:-160%;
+          color:#8e99a4;
+          border: none;
+            padding: 0;
+   }
+   .search{
+    color:#8e99a4;
+    font-weight: 400; 
+    padding-left: 50px;
+    font-size: 18px;
+    z-index: 3;
+    
+   }
+   .fa-times{
+       position: absolute;
+    top:30%;
+    right:5%;  
+   }
+</style>

@@ -1,0 +1,44 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <title style="font-family: 'Calligraffitti', cursive;">Pros n Cons</title>
+
+
+  {% block styles %}
+
+  {% bootstrap_css %}
+
+  <link rel="shortcut icon" href="https://www.verbicidemagazine.com/wp-content/uploads/2014/04/dead-kennedys-logo.jpg">
+
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  {% endblock %}
+
+</head>
+
+<body>
+  {% include 'base/navbar.html' %} 
+  <div class="container">
+  
+    {% block content %}
+
+    {%endblock%}
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg sticky navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Name</a>
+   {% if request.user.id %}
+   <a  class="nav-item" href="/auth/logout">LOGOUT</a>
+   {% else %}
+   <a  class="nav-item" href="/auth/login">LOGIN</a>
+   {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+         -->
+        <form class="form-inline my-2 my-lg-0" style="margin-left: 400px;" action="{% url 'search' %} " >
+            <input class="form-control mr-sm-2" name='user' type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      
+      </ul>
+      <ul class="navbar-nav mr-auto" >
+      <li class="nav-item" >
+        {% if request.user.profile.dp %}
+        <a class="nav-link" href="/profile/">
+        <a href="/profile">
+          <img src="{{request.user.profile.dp.url }}"  style="border-radius: 50%; width: 50px; height: 50px;"  id="prof">
+        </a>
+        {% else %}
+        <a href="/profile">
+        <img src="https://www.w3schools.com/howto/img_avatar.png" style="border-radius: 50%; width: 50px; height: 50px;">
+        </a>
+        {% endif %}
+        <a href="/profile">
+          <span style="color: whitesmoke;" >{{request.user.username}}</span>
+        </a>
+      </a>
+      </li>
+    </ul>
+    </div>
+  </nav>
+  <br>
+  <br>
